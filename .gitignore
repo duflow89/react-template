@@ -1,0 +1,15 @@
+node_modules
+dist
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# If you're using Zero-Installs on Yarn2:
+# !.yarn/cache
+
+# If you're not using Zero-Installs on Yarn2:
+.pnp.*
