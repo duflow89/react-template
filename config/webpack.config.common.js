@@ -37,16 +37,7 @@ if (process.env.ANALYZE) {
 }
 
 module.exports = {
-  target: 'browserslist',
-
   entry: path.resolve(SRC_PATH, 'index.tsx'),
-  output: {
-    path: DIST_PATH,
-    assetModuleFilename: 'images/[contenthash][ext][query]',
-    filename: 'js/[name].[contenthash].js',
-    chunkFilename: 'js/[name].[contenthash].chunk.js',
-    publicPath: '/',
-  },
 
   module: {
     rules: [
