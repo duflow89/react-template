@@ -1,11 +1,20 @@
 {
   "name": "react-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.tsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duflow89/react-template.git"
+  },
+  "private": true,
+  "author": "",
   "scripts": {
-    "start": "cross-env SERVE=true webpack serve --config ./config/webpack.config.js",
-    "watch": "webpack --watch  --config ./config/webpack.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
-    "build:dev": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env SERVE=true webpack serve --config ./config/webpack.config.dev.js",
+    "watch": "webpack --watch  --config ./config/webpack.config.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.prod.js",
+    "build:analyze": "cross-env ANALYZE=true yarn build",
+    "build:dev": "webpack --config ./config/webpack.config.dev.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "postinstall": "husky install"
@@ -32,6 +41,7 @@
     "@types/react-router-dom": "^5.1.8",
     "@types/uuid": "^8",
     "@types/webpack": "^5.28.0",
+    "@types/webpack-bundle-analyzer": "^4",
     "@types/webpack-env": "^1.16.2",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
@@ -68,6 +78,7 @@
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5",
     "webpack": "^5.42.0",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0",
@@ -100,20 +111,5 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
-  },
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.tsx",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/duflow89/react-template.git"
-  },
-  "homepage": "https://github.com/duflow89/react-template#readme",
-  "private": true,
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/duflow89/react-template/issues"
   }
 }

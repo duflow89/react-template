@@ -3,13 +3,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const ROOT_PATH = path.resolve(__dirname, '..');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 
-let mode = 'development';
-let target = 'web';
 const plugins = [
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin(),
@@ -19,25 +18,34 @@ const plugins = [
   }),
 ];
 
-if (process.env.NODE_ENV === 'production') {
-  mode = 'production';
-  target = 'browserslist';
-}
-
 if (process.env.SERVE) {
   // We only want React Hot Reloading in serve mode
   plugins.push(new ReactRefreshWebpackPlugin());
 }
 
-module.exports = {
-  mode: mode,
+if (process.env.ANALYZE) {
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'docs/size_dev.html',
+      defaultSizes: 'parsed',
+      openAnalyzer: true,
+      generateStatsFile: true,
+      statsFilename: 'docs/stats_dev.json',
+    }),
+  );
+}
 
-  target: target,
+module.exports = {
+  target: 'browserslist',
 
   entry: path.resolve(SRC_PATH, 'index.tsx'),
   output: {
     path: DIST_PATH,
-    assetModuleFilename: 'images/[hash][ext][query]',
+    assetModuleFilename: 'images/[contenthash][ext][query]',
+    filename: 'js/[name].[contenthash].js',
+    chunkFilename: 'js/[name].[contenthash].chunk.js',
+    publicPath: '/',
   },
 
   module: {
@@ -81,13 +89,5 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-  },
-
-  devtool: 'inline-source-map',
-  devServer: {
-    inline: true,
-    port: 4000,
-    historyApiFallback: true,
-    hot: true,
   },
 };
