@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { EnvironmentPlugin } = require('webpack');
 
 const ROOT_PATH = path.resolve(__dirname, '..');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
@@ -16,6 +17,7 @@ const plugins = [
     filename: 'index.html',
     template: path.resolve(SRC_PATH, 'index.html'),
   }),
+  new EnvironmentPlugin({ MOCK_API: false }),
 ];
 
 if (process.env.SERVE) {

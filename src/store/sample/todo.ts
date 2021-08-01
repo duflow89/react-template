@@ -16,12 +16,12 @@ export const todoActions = {
 
 const { addTodo, removeTodo, getCompletedTodoAsync, toggleOddItemsOnly } = todoActions;
 
-const initialState: TodoInitialState = {
+export const todoInitState: TodoInitialState = {
   list: [],
   isOddItemsOnly: false,
 };
 
-export const todoReducer = createReducer(initialState, (builder) =>
+export const todoReducer = createReducer(todoInitState, (builder) =>
   builder
     .addCase(addTodo, (state, { payload }) => ({
       ...state,
@@ -54,11 +54,12 @@ export const isOddItemsSelector = createSelector([todoSelector], (state) => stat
 export function* getCompletedTodoAsyncSaga({ payload }: PayloadAction<boolean>) {
   try {
     yield put(loadingActions.startLoading());
-    const response: TodoItemType[] = yield call(todoApi.getCompletedTodoAsyncMockResolve, payload);
+    const response: TodoItemType[] = yield call(todoApi.getCompletedTodoAsync, payload);
     yield put(getCompletedTodoAsync.success(response));
-    yield put(loadingActions.endLoading());
   } catch (e) {
     yield put(getCompletedTodoAsync.failure(e));
+  } finally {
+    yield put(loadingActions.endLoading());
   }
 }
 

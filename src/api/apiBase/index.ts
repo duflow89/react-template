@@ -21,16 +21,16 @@ const axiosInstance = axios.create({
 const generateUrl = (path: string) => `${API_BASE_URL}${BASE_VERSION}${path}`;
 
 export const api = {
-  get<T>(path: string, _config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.get(generateUrl(path), _config);
+  get<T>(path: string, config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.get(generateUrl(path), config);
   },
-  post<T>(path: string, data?: any, _config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.post(generateUrl(path), data, _config);
+  post<T>(path: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.post(generateUrl(path), data, config);
   },
-  put<T>(path: string, data?: any, _config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.put(generateUrl(path), data, _config);
+  put<T>(path: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.put(generateUrl(path), data, config);
   },
-  delete<T>(path: string, _config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.delete(generateUrl(path), _config);
+  delete<T>(path: string, config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.delete(generateUrl(path), config);
   },
 };

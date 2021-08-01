@@ -1,13 +1,22 @@
-import { mockResolve } from '~/api/utils';
+import { apiConverter, mockResolve } from '~/api/utils';
 import { api } from '~/api/apiBase';
-import { mockCompletedTodoList } from './mockTodo';
+import { mockCompletedTodoList } from '~/api/mock/todo';
 
-export const todoApi = {
-  getCompletedTodoAsyncApi: () => api.get('/getTodo', { params: { date: '20210505' } }),
-  getCompletedTodoAsyncMockResolve: (isEvenItemsOnly: boolean) =>
+const realApi = {
+  getCompletedTodoAsync: (isEvenItemsOnly: boolean) =>
+    api.get('/getTodo', { params: { isEvenItemsOnly } }),
+};
+
+const mockApi = {
+  getCompletedTodoAsync: (isEvenItemsOnly: boolean) =>
     mockResolve(
       isEvenItemsOnly
         ? mockCompletedTodoList.filter((_, index) => index % 2 === 0)
         : mockCompletedTodoList,
     ),
+};
+
+export const todoApi = {
+  getCompletedTodoAsync: (isEvenItemsOnly: boolean) =>
+    apiConverter(realApi.getCompletedTodoAsync, mockApi.getCompletedTodoAsync, isEvenItemsOnly),
 };
