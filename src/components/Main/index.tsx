@@ -1,6 +1,6 @@
 const Main = () => (
   <>
-    <div>MAIN PAGE</div>
+    <h1>MAIN PAGE</h1>
   </>
 );
 

@@ -1,4 +1,4 @@
-import '~/styles/index.scss';
+import '~/resources/styles/index.scss';
 
 import ReactDOM from 'react-dom';
 import App from '~/components/App';

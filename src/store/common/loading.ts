@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { createSelector } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
+
 import { RootState } from '~/store/rootReducer';
 
 const initialState = { loadingCount: 0 };

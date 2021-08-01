@@ -1,5 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 type NodeEnv = 'development' | 'production';
 
@@ -14,26 +13,24 @@ const API_BASE_URL = {
 
 const REQUEST_TIMEOUT = 30 * 1000;
 
-const config = {
+const axiosInstance = axios.create({
   timeout: REQUEST_TIMEOUT,
   headers: { 'Content-Type': 'application/json' },
-};
-
-const axiosInstance = axios.create(config);
+});
 
 const generateUrl = (path: string) => `${API_BASE_URL}${BASE_VERSION}${path}`;
 
 export const api = {
-  get<T>(path: string, config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.get(generateUrl(path), config);
+  get<T>(path: string, _config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.get(generateUrl(path), _config);
   },
-  post<T>(path: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.post(generateUrl(path), data, config);
+  post<T>(path: string, data?: any, _config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.post(generateUrl(path), data, _config);
   },
-  put<T>(path: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.put(generateUrl(path), data, config);
+  put<T>(path: string, data?: any, _config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.put(generateUrl(path), data, _config);
   },
-  delete<T>(path: string, config?: AxiosRequestConfig): Promise<T> {
-    return axiosInstance.delete(generateUrl(path), config);
+  delete<T>(path: string, _config?: AxiosRequestConfig): Promise<T> {
+    return axiosInstance.delete(generateUrl(path), _config);
   },
 };

@@ -8,6 +8,8 @@ const SampleRoute = () => (
   <Switch>
     <Route exact path={SAMPLE_ROUTES.ROOT} component={SampleMain} />
     <Route path={SAMPLE_ROUTES.TODO_LIST} component={TodoMain} />
+    <Route path={SAMPLE_ROUTES.SUB_PAGE1} component={TodoMain} />
+    <Route path={SAMPLE_ROUTES.SUB_PAGE2} component={TodoMain} />
     <Redirect to={SAMPLE_ROUTES.ROOT} />
   </Switch>
 );
