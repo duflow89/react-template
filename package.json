@@ -15,6 +15,7 @@
     "build:analyze": "cross-env ANALYZE=true yarn build",
     "build:dev": "webpack --config ./config/webpack.config.dev.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint-staged": "lint-staged",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "postinstall": "husky install"
   },
