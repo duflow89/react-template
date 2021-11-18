@@ -8,7 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack -c ./configs/webpack.config.prod.js",
     "build:analyze": "cross-env ANALYZE=true yarn build",
     "build:dev": "webpack -c ./configs/webpack.config.dev.js",
-    "lint": "eslint -c ./configs/.eslintrc.js --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint": "eslint -c ./configs/.eslintrc.js --ext \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:fix": "eslint -c ./configs/.eslintrc.js --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "lint-staged": "lint-staged -c ./configs/lint-staged.config.js",
     "postinstall": "husky install",
     "sdk": "yarn dlx @yarnpkg/sdks vscode"
