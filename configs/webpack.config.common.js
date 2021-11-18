@@ -6,6 +6,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { EnvironmentPlugin } = require('webpack');
 
+const postcssConfig = path.resolve(__dirname, 'postcss.config.js');
+const babelConfig = require('./babel.config');
+
 const ROOT_PATH = path.resolve(__dirname, '..');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
@@ -63,7 +66,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: path.resolve(__dirname, 'postcss.config.js'),
+                config: postcssConfig,
               },
             },
           },
@@ -73,7 +76,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: { loader: 'babel-loader' },
+        use: { loader: 'babel-loader', options: babelConfig },
       },
     ],
   },

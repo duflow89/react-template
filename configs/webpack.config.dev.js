@@ -21,9 +21,7 @@ module.exports = merge(commonConfig, {
   devtool: 'inline-source-map',
   devServer: {
     open: true,
-    inline: true,
     port: 3000,
-    disableHostCheck: true,
     historyApiFallback: true,
     hot: true,
   },
