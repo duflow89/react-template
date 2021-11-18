@@ -14,7 +14,9 @@ const generateTSConfig = (stagedFilenames) => {
   }
 };
 
+const listCli = 'eslint -c ./configs/.eslintrc.js --ext "./src/**/*.{js,jsx,ts,tsx,json}"';
+
 module.exports = {
-  '*.{js,jsx}': ['yarn lint'],
-  '*.{ts,tsx}': ['yarn lint', generateTSConfig],
+  '*.{js,jsx}': [listCli],
+  '*.{ts,tsx}': [listCli, generateTSConfig],
 };
