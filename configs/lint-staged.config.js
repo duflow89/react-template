@@ -15,6 +15,6 @@ const generateTSConfig = (stagedFilenames) => {
 };
 
 module.exports = {
-  '*.{js,jsx}': ['eslint --ext .js,.jsx,.ts,.tsx --fix'],
-  '*.{ts,tsx}': ['eslint --ext .js,.jsx,.ts,.tsx --fix', generateTSConfig],
+  '*.{js,jsx}': ['yarn lint'],
+  '*.{ts,tsx}': ['yarn lint', generateTSConfig],
 };

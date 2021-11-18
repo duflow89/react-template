@@ -24,8 +24,16 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:eslint-comments/recommended',
     'plugin:prettier/recommended',
+    'plugin:promise/recommended',
   ],
-  plugins: ['jsx-conditionals', '@typescript-eslint', 'react', 'react-hooks', 'prettier'],
+  plugins: [
+    'jsx-conditionals',
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'prettier',
+    'promise',
+  ],
   env: {
     es6: true,
     browser: true,
