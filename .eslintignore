@@ -1,0 +1,5 @@
+dist
+config
+.yarn
+
+**/*.d.ts

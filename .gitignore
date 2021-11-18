@@ -1,6 +1,9 @@
 dist
 node_modules
 
+tsconfig.lint.json
+
+# yarn berry
 /.yarn/*
 !/.yarn/patches
 !/.yarn/plugins
